@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTeams } from './actions/teamActions'
 import TeamsContainer from './components/teamsContainer'
+import NavBar from './components/navBar'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -11,10 +13,13 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="App">
-        <h1>Welcome to Soccer Fans Connected</h1>
-        <TeamsContainer teams={this.props.teams} />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <h1>Welcome to Soccer Fans Connected</h1>
+          <TeamsContainer teams={this.props.teams} />
+        </div>
+      </Router>
     );
   }
 }
