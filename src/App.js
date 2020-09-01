@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchTeams } from './actions/teamActions'
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchTeams();
+  }
   
   render() {
     console.log(this.props)
-    console.log('in APP render')
     return (
       <div className="App">
         <h1>Hello World!</h1>
@@ -18,4 +22,10 @@ const mapStateToProps = (state) => {
   return state.teams;
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTeams: () => dispatch(fetchTeams()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
