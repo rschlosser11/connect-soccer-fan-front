@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTeams } from './actions/teamActions'
+import TeamsContainer from './components/teamsContainer'
 
 class App extends React.Component {
 
@@ -9,10 +10,10 @@ class App extends React.Component {
   }
   
   render() {
-    console.log(this.props)
     return (
       <div className="App">
-        <h1>Hello World!</h1>
+        <h1>Welcome to Soccer Fans Connected</h1>
+        <TeamsContainer teams={this.props.teams} />
       </div>
     );
   }
