@@ -17,7 +17,7 @@ class App extends React.Component {
         <div className="App">
           <NavBar />
           <h1>Welcome to Soccer Fans Connected</h1>
-          <TeamsContainer teams={this.props.teams} />
+          <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
         </div>
       </Router>
     );
