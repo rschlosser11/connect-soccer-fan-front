@@ -1,7 +1,7 @@
-export default function manageTeams (state = {teams: []}, action) {
+export default function manageTeams (state = [], action) {
     switch (action.type) {
         case 'ADD_TEAMS':
-            return {teams: action.teams};
+            return action.teams;
         default: 
             return state;
     }

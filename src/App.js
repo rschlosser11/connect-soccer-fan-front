@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams } from './actions/teamActions'
+import { fetchTeams, fetchFixtures } from './actions/manageFetch'
 import TeamsContainer from './components/teamsContainer'
 import NavBar from './components/navBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -9,6 +9,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchTeams();
+    this.props.fetchFixtures();
   }
   
   render() {
@@ -25,12 +26,16 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.teams;
+  return {
+    teams: state.teams,
+    fixtures: state.fixtures,
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchTeams: () => dispatch(fetchTeams()),
+    fetchFixtures: () => dispatch(fetchFixtures()),
   }
 }
 
