@@ -12,6 +12,7 @@ export default function FixturesContainer (props) {
                     <th>Home</th>
                     <th>Away</th>
                     <th>Venue</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
