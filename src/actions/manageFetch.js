@@ -74,8 +74,9 @@ export const fetchComments = () => {
 }
 
 export const newComment = (comment) => {
+    console.log("in newComment")
     return (dispatch) => {
-        fetch('http://localhost:3000/Comments', {
+        fetch('http://localhost:3000/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
