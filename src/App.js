@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments } from './actions/manageFetch'
+import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments, newComment } from './actions/manageFetch'
 import TeamsContainer from './components/teamsContainer'
 import NavBar from './components/navBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -26,6 +26,7 @@ class App extends React.Component {
   }
   
   render() {
+    console.log('in App', this.props.fixtures)
     return (
       <Router>
         <div className="App">
@@ -33,7 +34,7 @@ class App extends React.Component {
           <Route exact path='/' render={() => <h1>Welcome to Soccer Fans Connected</h1>} />
           <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
           <Route exact path='/fixtures' render={routerProps => <FixturesContainer {...routerProps} fixtures={this.props.fixtures} /> } />
-          <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} comments={this.props.comments} />} />
+          <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} comments={this.props.comments} addNewComment={this.props.newComment} />} />
           <Route exact path='/login' render={routerProps => <LoginForm {...routerProps} handleLogin={this.handleLogin}/>} />
           <Route exact path='/signup' render={routerProps => <SignUpForm {...routerProps} handleSignUp={this.props.newUser} />} />
         </div>
@@ -57,7 +58,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchFixtures: () => dispatch(fetchFixtures()),
     fetchUser: (user) => dispatch(fetchUser(user)),
     newUser: (user) => dispatch(newUser(user)),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    newComment: (comment) => dispatch(newComment(comment))
   }
 }
 

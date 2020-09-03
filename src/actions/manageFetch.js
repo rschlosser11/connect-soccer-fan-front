@@ -2,6 +2,7 @@ const ADD_TEAMS = 'ADD_TEAMS';
 const ADD_FIXTURES = 'ADD_FIXTURES';
 const ADD_USER = 'ADD_USER'
 const ADD_COMMENTS = 'ADD_COMMENTS'
+const NEW_COMMENT = 'NEW_COMMENT';
 
 export const fetchTeams = () => {
     return (dispatch) => {
@@ -68,6 +69,24 @@ export const fetchComments = () => {
         fetch(`http://localhost:3000/comments`)
         .then(resp => resp.json())
         .then(obj => dispatch({type: ADD_COMMENTS, comments: obj}))
+        .catch(err => console.log(err))
+    }
+}
+
+export const newComment = (comment) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/Comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                comment: comment
+            })
+        })
+        .then(resp => resp.json())
+        .then(obj => dispatch({type: NEW_COMMENT, comment: obj}))
         .catch(err => console.log(err))
     }
 }

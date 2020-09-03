@@ -4,7 +4,6 @@ import { Form, Button } from 'react-bootstrap'
 class CommentForm extends React.Component {
     state = {
         text: '',
-        fixture_id: null
     }
 
     handleChange = (e) => {
@@ -14,6 +13,12 @@ class CommentForm extends React.Component {
         this.setState({
             [key]: value
         })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.props)
+        // this.props.addNewComment({text: this.state.text, user_id: sessionStorage.getItem('user'), fixture_id: this.props.fixture.id})
     }
 
     render () {

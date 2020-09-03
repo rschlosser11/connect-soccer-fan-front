@@ -14,7 +14,7 @@ function CommentContainer (props) {
                     {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
                 </Col>
                 <Col>
-                    {sessionStorage.getItem('user') ? <CommentForm fixture={props.fixture} /> : <SignUpForm />}
+                    {sessionStorage.getItem('user') ? <CommentForm fixture={props.fixture} addNewComment={props.addNewComment} /> : <SignUpForm />}
                 </Col>
             </Row>
         </Container>
