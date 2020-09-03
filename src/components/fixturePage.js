@@ -13,7 +13,7 @@ function FixturePage (props) {
             <Tabs defaultActiveKey='chat' id='uncontrolled-tab-example'>
                 <Tab eventKey='chat' title='Chat'>
                     <Container>
-                        <CommentContainer fixutre={fixture} comments={comments} addNewComment={props.addNewComment} />
+                        <CommentContainer fixture={fixture} comments={comments} addNewComment={props.addNewComment} />
                     </Container>
                 </Tab>
                 <Tab eventKey='lineups' title='Starting Lineups'></Tab>

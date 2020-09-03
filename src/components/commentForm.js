@@ -17,12 +17,10 @@ class CommentForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props)
-        // this.props.addNewComment({text: this.state.text, user_id: sessionStorage.getItem('user'), fixture_id: this.props.fixture.id})
+        this.props.addNewComment({text: this.state.text, user_id: sessionStorage.getItem('user'), fixture_id: this.props.fixture.id})
     }
 
     render () {
-        console.log('commentform', this.props.fixture)
         return (
             <Form>
                 <Form.Group controlId='formBasicText'>

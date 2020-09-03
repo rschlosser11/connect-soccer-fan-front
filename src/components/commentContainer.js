@@ -6,7 +6,6 @@ import SignUpForm from './signUpForm';
 
 function CommentContainer (props) {
     let comments = props.comments
-    console.log(comments)
     return (
         <Container>
             <Row>
