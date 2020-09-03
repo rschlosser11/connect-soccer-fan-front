@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function NavBar(props) {
-    console.log(props)
     return(
         <Navbar bg='light' expand='lg'>
             <Navbar.Brand>
