@@ -1,5 +1,6 @@
 const ADD_TEAMS = 'ADD_TEAMS';
 const ADD_FIXTURES = 'ADD_FIXTURES';
+const ADD_USER = 'ADD_USER'
 
 export const fetchTeams = () => {
     return (dispatch) => {
@@ -16,5 +17,26 @@ export const fetchFixtures = () => {
         .then(resp => resp.json())
         .then(obj => dispatch({type: ADD_FIXTURES, fixtures: obj}))
         .catch(err => console.log(err))
+    }
+}
+
+export const fetchUser = (user) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/users/signin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                user: user
+            })
+        })
+        .then(resp => resp.json())
+        .then(obj => {
+            dispatch({type: ADD_USER, user: obj})
+            sessionStorage.setItem('user', obj.id)
+        })
+        .catch(error => console.log(error))
     }
 }

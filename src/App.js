@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams, fetchFixtures } from './actions/manageFetch'
+import { fetchTeams, fetchFixtures, fetchUser } from './actions/manageFetch'
 import TeamsContainer from './components/teamsContainer'
 import NavBar from './components/navBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -14,6 +14,10 @@ class App extends React.Component {
     this.props.fetchTeams();
     this.props.fetchFixtures();
   }
+
+  handleLogin = (user) => {
+    this.props.fetchUser(user)
+  }
   
   render() {
     return (
@@ -24,7 +28,7 @@ class App extends React.Component {
           <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
           <Route exact path='/fixtures' render={routerProps => <FixturesContainer {...routerProps} fixtures={this.props.fixtures} /> } />
           <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} />} />
-          <Route exact path='/login' component={LoginForm} />
+          <Route exact path='/login' render={routerProps => <LoginForm {...routerProps} handleLogin={this.handleLogin}/>} />
         </div>
       </Router>
     );
@@ -35,6 +39,7 @@ const mapStateToProps = (state) => {
   return {
     teams: state.teams,
     fixtures: state.fixtures,
+    user: state.user
   };
 }
 
@@ -42,6 +47,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTeams: () => dispatch(fetchTeams()),
     fetchFixtures: () => dispatch(fetchFixtures()),
+    fetchUser: (user) => dispatch(fetchUser(user))
   }
 }
 

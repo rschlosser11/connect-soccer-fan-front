@@ -3,7 +3,6 @@ import { Container, Form, Button } from 'react-bootstrap';
 
 class LoginForm extends React.Component {
     state = {
-        username: '',
         email: '',
         password: '',
     }
@@ -19,23 +18,14 @@ class LoginForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.handleLogin(this.state)
     }
 
     render() {
         return (
             <Container>
+                <h3>Login</h3>
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId='exampleForm.ControlText'>
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control 
-                            name='username' 
-                            type='text' 
-                            placeholder='Enter Username'
-                            value={this.state.username} 
-                            onChange={this.handleChange}
-                        />
-                    </Form.Group>
                     <Form.Group controlId='formBasicEmail'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
