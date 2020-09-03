@@ -1,6 +1,7 @@
 const ADD_TEAMS = 'ADD_TEAMS';
 const ADD_FIXTURES = 'ADD_FIXTURES';
 const ADD_USER = 'ADD_USER'
+const ADD_COMMENTS = 'ADD_COMMENTS'
 
 export const fetchTeams = () => {
     return (dispatch) => {
@@ -58,6 +59,15 @@ export const newUser = (user) => {
             dispatch({type: ADD_USER, user: obj})
             sessionStorage.setItem('user', obj.id)
         })
+        .catch(err => console.log(err))
+    }
+}
+
+export const fetchComments = () => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/comments`)
+        .then(resp => resp.json())
+        .then(obj => dispatch({type: ADD_COMMENTS, comments: obj}))
         .catch(err => console.log(err))
     }
 }
