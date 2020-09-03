@@ -40,3 +40,24 @@ export const fetchUser = (user) => {
         .catch(error => console.log(error))
     }
 }
+
+export const newUser = (user) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                user: user
+            })
+        })
+        .then(resp => resp.json())
+        .then(obj => {
+            dispatch({type: ADD_USER, user: obj})
+            sessionStorage.setItem('user', obj.id)
+        })
+        .catch(err => console.log(err))
+    }
+}
