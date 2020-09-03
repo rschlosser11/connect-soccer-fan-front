@@ -1,14 +1,21 @@
 import React from 'react';
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap';
+import Comment from './comment';
+import CommentForm from './commentForm';
 
 function CommentContainer (props) {
-    
-    console.log(props)
     let comments = props.comments
     console.log(comments)
     return (
         <Container>
-            {comments.map(comment => console.log(comment))}
+            <Row>
+                <Col>
+                    {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+                </Col>
+                <Col>
+                    <CommentForm fixture={props.fixture} />
+                </Col>
+            </Row>
         </Container>
     )
 }

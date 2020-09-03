@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap'
 
-class ChatForm extends React.Component {
+class CommentForm extends React.Component {
     state = {
         text: '',
-        fixture_id: this.props.fixture.id,
+        fixture_id: null
     }
 
     handleChange = (e) => {
@@ -17,6 +17,7 @@ class ChatForm extends React.Component {
     }
 
     render () {
+        console.log('commentform', this.props.fixture)
         return (
             <Form>
                 <Form.Group controlId='formBasicText'>
@@ -30,7 +31,7 @@ class ChatForm extends React.Component {
                         onChange={this.handleChange}
                     />
                 </Form.Group>
-                <Button variant='primary' type='submit'>
+                <Button variant='primary' type='submit' data-fixture-id={this.props.fixture}>
                     Post
                 </Button>
             </Form>
@@ -38,4 +39,4 @@ class ChatForm extends React.Component {
     }
 }
 
-export default ChatForm;
+export default CommentForm;
