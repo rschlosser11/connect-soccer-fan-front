@@ -1,7 +1,9 @@
-export default function manageUsers (state = {}, action) {
+export default function manageUsers (state = null, action) {
     switch (action.type) {
         case 'ADD_USER':
             return action.user;
+        case 'REMOVE_USER':
+            return null;
         default: 
             return state;
     }

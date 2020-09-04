@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function NavBar(props) {
+    const handleLogout = () => {
+        props.handleLogout();
+        props.history.push('/')
+    }
+
     return(
         <Navbar bg='light' expand='lg'>
             <Navbar.Brand>
@@ -14,9 +19,10 @@ export default function NavBar(props) {
                 <Nav className='mr-auto justify-content-end' style={{ width: "100%" }}>
                     <LinkContainer className='nav-link' to='/teams'><NavItem>Teams</NavItem></LinkContainer>
                     <LinkContainer className='nav-link' to='/fixtures'><NavItem>Fixtures</NavItem></LinkContainer>
-                    {!!sessionStorage.getItem('user') ? <LinkContainer className='nav-link' to='/logout' onClick={props.handleLogout}><NavItem>Logout</NavItem></LinkContainer> : <LinkContainer className='nav-link' to='/signup' ><NavItem>Sign Up/Login</NavItem></LinkContainer>}
+                    {!!props.user ? <LinkContainer className='nav-link' to='/logout' onClick={handleLogout}><NavItem>Logout</NavItem></LinkContainer> : <LinkContainer className='nav-link' to='/signup' ><NavItem>Sign Up/Login</NavItem></LinkContainer>}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
     )
 }
+

@@ -3,6 +3,7 @@ const ADD_FIXTURES = 'ADD_FIXTURES';
 const ADD_USER = 'ADD_USER'
 const ADD_COMMENTS = 'ADD_COMMENTS'
 const NEW_COMMENT = 'NEW_COMMENT';
+const REMOVE_USER = 'REMOVE_USER';
 
 export const fetchTeams = () => {
     return (dispatch) => {
@@ -90,4 +91,8 @@ export const newComment = (comment) => {
         .then(obj => dispatch({type: NEW_COMMENT, comment: obj}))
         .catch(err => console.log(err))
     }
+}
+
+export const removeUser = () => {
+    return {type: REMOVE_USER}
 }

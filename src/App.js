@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments, newComment } from './actions/manageFetch'
+import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments, newComment, removeUser} from './actions/manageFetch'
 import TeamsContainer from './components/teamsContainer'
 import NavBar from './components/navBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -23,6 +23,7 @@ class App extends React.Component {
   }
 
   handleLogout = () => {
+    this.props.removeUser();
     sessionStorage.removeItem('user')
   }
   
@@ -30,7 +31,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <NavBar handleLogout={this.handleLogout} />
+          <Route path='/' render={routerProps => <NavBar {...routerProps} handleLogout={this.handleLogout} user={this.props.user} />} />
           <Route exact path='/' component={Homepage} />
           <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
           <Route exact path='/fixtures' render={routerProps => <FixturesContainer {...routerProps} fixtures={this.props.fixtures} /> } />
@@ -59,7 +60,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser: (user) => dispatch(fetchUser(user)),
     newUser: (user) => dispatch(newUser(user)),
     fetchComments: () => dispatch(fetchComments()),
-    newComment: (comment) => dispatch(newComment(comment))
+    newComment: (comment) => dispatch(newComment(comment)),
+    removeUser: () => dispatch(removeUser())
   }
 }
 
