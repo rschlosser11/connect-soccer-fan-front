@@ -38,8 +38,12 @@ export const fetchUser = (user) => {
         })
         .then(resp => resp.json())
         .then(obj => {
-            dispatch({type: ADD_USER, user: obj})
-            sessionStorage.setItem('user', obj.id)
+            if (obj.hasOwnProperty('id')) {
+                dispatch({type: ADD_USER, user: obj})
+                sessionStorage.setItem('user', obj.id)
+            } else {
+                console.log(obj.message)
+            }
         })
         .catch(error => console.log(error))
     }

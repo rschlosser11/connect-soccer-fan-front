@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 
 class LoginForm extends React.Component {
     state = {
         email: '',
         password: '',
+        displayAlert: false
     }
 
     handleChange = (e) => {
@@ -18,18 +19,29 @@ class LoginForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleLogin(this.state)
-        this.props.history.push('/')
+        this.props.handleLogin({email: this.state.email, password: this.state.password})
+        if (sessionStorage.getItem('user')) {
+            this.props.history.push('/')
+            this.setState({
+                email: '',
+                password: '',
+                displayAlert: false
+            })
+        } else {
+            this.setState({displayAlert: true})
+        }
     }
 
     render() {
         return (
             <Container>
+                {this.state.displayAlert ? <Alert variant='danger'>Incorrect email or password</Alert> : ''}
                 <h3>Login</h3>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId='formBasicEmail'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
+                            required
                             name='email' 
                             type='email' 
                             placeholder='Enter email'
@@ -40,6 +52,7 @@ class LoginForm extends React.Component {
                     <Form.Group controlId='formBasicPassword'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
+                            required
                             name='password' 
                             type='password' 
                             placeholder='Enter password'

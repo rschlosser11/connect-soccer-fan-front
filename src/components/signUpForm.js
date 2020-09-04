@@ -33,6 +33,7 @@ class SignUpForm extends React.Component {
                     <Form.Group controlId='formBasicText'>
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
+                            required
                             name='username' 
                             type='text' 
                             placeholder='Enter username'
@@ -43,6 +44,7 @@ class SignUpForm extends React.Component {
                     <Form.Group controlId='formBasicEmail'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
+                            required
                             name='email' 
                             type='email' 
                             placeholder='Enter email'
@@ -53,6 +55,7 @@ class SignUpForm extends React.Component {
                     <Form.Group controlId='formBasicPassword'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
+                            required
                             name='password' 
                             type='password' 
                             placeholder='Enter password'
