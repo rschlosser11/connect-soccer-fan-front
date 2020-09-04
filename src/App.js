@@ -8,6 +8,7 @@ import FixturesContainer from './components/fixtureContainer'
 import FixturePage from './components/fixturePage';
 import LoginForm from './components/loginForm';
 import SignUpForm from './components/signUpForm';
+import Homepage from './components/homepage';
 
 class App extends React.Component {
 
@@ -30,7 +31,7 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <NavBar handleLogout={this.handleLogout} />
-          <Route exact path='/' render={() => <h1>Welcome to Soccer Fans Connected</h1>} />
+          <Route exact path='/' component={Homepage} />
           <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
           <Route exact path='/fixtures' render={routerProps => <FixturesContainer {...routerProps} fixtures={this.props.fixtures} /> } />
           <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} comments={this.props.comments} addNewComment={this.props.newComment} />} />
