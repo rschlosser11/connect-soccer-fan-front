@@ -9,6 +9,7 @@ import FixturePage from './components/fixturePage';
 import LoginForm from './components/loginForm';
 import SignUpForm from './components/signUpForm';
 import Homepage from './components/homepage';
+import TeamPage from './components/teamPage';
 
 class App extends React.Component {
 
@@ -39,6 +40,7 @@ class App extends React.Component {
           <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} comments={this.props.comments} addNewComment={this.props.newComment} />} />
           <Route exact path='/login' render={routerProps => <LoginForm {...routerProps} handleLogin={this.handleLogin}/>} />
           <Route exact path='/signup' render={routerProps => <SignUpForm {...routerProps} handleSignUp={this.props.newUser} />} />
+          <Route exact path='/teams/:teamId' render={routerProps => <TeamPage {...routerProps} teams={this.props.teams} players={this.props.players} />} />
         </div>
       </Router>
     );
