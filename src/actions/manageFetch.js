@@ -4,6 +4,7 @@ const ADD_USER = 'ADD_USER'
 const ADD_COMMENTS = 'ADD_COMMENTS'
 const NEW_COMMENT = 'NEW_COMMENT';
 const REMOVE_USER = 'REMOVE_USER';
+const ADD_PLAYERS = 'ADD_PLAYERS'
 
 export const fetchTeams = () => {
     return (dispatch) => {
@@ -75,7 +76,6 @@ export const fetchComments = () => {
 }
 
 export const newComment = (comment) => {
-    console.log("in newComment")
     return (dispatch) => {
         fetch('http://localhost:3000/comments', {
             method: 'POST',
@@ -95,4 +95,13 @@ export const newComment = (comment) => {
 
 export const removeUser = () => {
     return {type: REMOVE_USER}
+}
+
+export const fetchPlayers = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/players')
+        .then(resp => resp.json())
+        .then(obj => dispatch({type: ADD_PLAYERS, players: obj}))
+        .catch(err => console.log(err))
+    }
 }
