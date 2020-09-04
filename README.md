@@ -1,8 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Connect Soccer Fans
 
-In the project directory, you can run:
+In the wake of the pandemic many sporting events are taking place behind closed doors. This app is a way for fans to connect during soccer matches.
+
+The backend Rails API can be found [here](https://github.com/rschlosser11/connect-soccer-fans-backend).
 
 ### `yarn start`
 
