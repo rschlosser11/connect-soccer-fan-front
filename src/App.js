@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments, newComment, removeUser } from './actions/manageFetch'
+import { fetchTeams, fetchFixtures, fetchUser, newUser, fetchComments, newComment, removeUser, fetchPlayers} from './actions/manageFetch'
 import TeamsContainer from './components/teamsContainer'
 import NavBar from './components/navBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -16,6 +16,7 @@ class App extends React.Component {
     this.props.fetchTeams();
     this.props.fetchFixtures();
     this.props.fetchComments();
+    this.props.fetchPlayers();
   }
 
   handleLogin = (user) => {
@@ -50,6 +51,7 @@ const mapStateToProps = (state) => {
     fixtures: state.fixtures,
     user: state.user,
     comments: state.comments,
+    players: state.players
   };
 }
 
@@ -62,6 +64,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchComments: () => dispatch(fetchComments()),
     newComment: (comment) => dispatch(newComment(comment)),
     removeUser: () => dispatch(removeUser()),
+    fetchPlayers: () => dispatch(fetchPlayers())
   }
 }
 
