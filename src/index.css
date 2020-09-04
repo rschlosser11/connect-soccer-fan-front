@@ -29,3 +29,7 @@ h1 {
 button.close {
   display: none;
 }
+
+.nav-link:hover {
+  cursor: pointer;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Image, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import audience from '../img/audience-1866738_1920.jpg'
-import ball from '../img/soccer-ball.png'
 
 export default function homepage () {
     return (
