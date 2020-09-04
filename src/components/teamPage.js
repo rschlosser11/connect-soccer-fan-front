@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Tabs, Tab, Image, Row, Col } from 'react-bootstrap';
+import { Container, Tabs, Tab, Image, Row, Col, CardColumns } from 'react-bootstrap';
+import Player from './player'
 
 export default function TeamPage (props) {
     let id = parseInt(props.match.params.teamId)
@@ -20,6 +21,9 @@ export default function TeamPage (props) {
             </Row>
             <Tabs defaultActiveKey='players' id='uncontrolled-tab-example'>
                 <Tab eventKey='players' title='First Team Squad'>
+                    <CardColumns>
+                        {players.map(player => <Player player={player} />)}
+                    </CardColumns>
                 </Tab>
                 <Tab eventKey='stats' title='Stats'></Tab>
             </Tabs>
