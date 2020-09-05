@@ -9,7 +9,6 @@ class CommentForm extends React.Component {
     handleChange = (e) => {
         let key = e.target.name;
         let value = e.target.value
-        e.persist()
         this.setState({
             [key]: value
         })
@@ -17,7 +16,6 @@ class CommentForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props)
         let comment = {text: this.state.text, user_id: sessionStorage.getItem('user'), fixture_id: this.props.fixture.id}
         this.props.addNewComment(comment)
         this.setState({
