@@ -37,3 +37,11 @@ button.close {
 .navbar {
   margin-bottom: 20px;
 }
+
+.navbar  img {
+  margin-right: 5px;
+}
+
+.navbar-brand .nav-link{
+  color: rgba(0,0,0,.5);
+}
