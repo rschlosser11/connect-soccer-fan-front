@@ -4,7 +4,7 @@ export default function manageComments(state = [], action) {
             return action.comments;
         case 'NEW_COMMENT':
             if (!state.find(comm => comm.id === action.comment.id)){
-                return [...state, action.comment]
+                return [action.comment, ...state]
             } else {
                 return state;
             }    

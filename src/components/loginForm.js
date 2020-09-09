@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.handleLogin({email: this.state.email, password: this.state.password})
-        if (sessionStorage.getItem('user')) {
+        if (this.props.user) {
             this.props.history.push('/')
             this.setState({
                 email: '',
