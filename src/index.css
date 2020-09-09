@@ -33,3 +33,7 @@ button.close {
 .nav-link:hover {
   cursor: pointer;
 }
+
+.navbar {
+  margin-bottom: 20px;
+}
