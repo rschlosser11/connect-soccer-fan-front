@@ -45,3 +45,11 @@ button.close {
 .navbar-brand .nav-link{
   color: rgba(0,0,0,.5);
 }
+
+.carousel {
+  margin-bottom: 30px;
+}
+
+.carousel-caption {
+  background: rgba(0,0,0,.5);
+}
