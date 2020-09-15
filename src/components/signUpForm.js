@@ -22,6 +22,7 @@ class SignUpForm extends React.Component {
         e.preventDefault();
         console.log(this.state)
         this.props.handleSignUp(this.state)
+        this.props.history.push('/');
     }
 
     render() {
