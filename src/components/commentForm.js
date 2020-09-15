@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap';
+import { newComment } from '../actions/manageFetch';
+import { connect } from 'react-redux';
 
 class CommentForm extends React.Component {
     state = {
@@ -7,10 +9,9 @@ class CommentForm extends React.Component {
     }
 
     handleChange = (e) => {
-        let key = e.target.name;
         let value = e.target.value
         this.setState({
-            [key]: value
+            text: value
         })
     }
 
@@ -45,4 +46,10 @@ class CommentForm extends React.Component {
     }
 }
 
-export default CommentForm;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addNewComment: (comm) => dispatch(newComment(comm)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CommentForm);
