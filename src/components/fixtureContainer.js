@@ -1,9 +1,9 @@
 import React from 'react';
 import Fixture from './fixture';
 import { Container, Table } from 'react-bootstrap'
+import { connect } from 'react-redux';
 
-export default function FixturesContainer (props) {
-    let fixtures = props.fixtures;
+function FixturesContainer ({ fixtures }) {
     return (
         <Container>
             <Table striped bordered hover className='fixtures-table'>
@@ -23,3 +23,11 @@ export default function FixturesContainer (props) {
         </Container>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        fixtures: state.fixtures,
+    }
+}
+
+export default connect(mapStateToProps)(FixturesContainer)
