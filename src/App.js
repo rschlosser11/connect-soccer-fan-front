@@ -37,7 +37,7 @@ class App extends React.Component {
           <Route exact path='/' component={Homepage} />
           <Route exact path='/teams' render={routerProps => <TeamsContainer {...routerProps} teams={this.props.teams} />} />
           <Route exact path='/fixtures' render={routerProps => <FixturesContainer {...routerProps} /> } />
-          <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} comments={this.props.comments} addNewComment={this.props.newComment} />} />
+          <Route exact path='/fixtures/:id' render={routerProps => <FixturePage {...routerProps} fixtures={this.props.fixtures} addNewComment={this.props.newComment} />} />
           <Route exact path='/login' render={routerProps => <LoginForm {...routerProps} handleLogin={this.handleLogin} user={this.props.user} />} />
           <Route exact path='/signup' render={routerProps => <SignUpForm {...routerProps} handleSignUp={this.props.newUser} />} />
           <Route exact path='/teams/:teamId' render={routerProps => <TeamPage {...routerProps} teams={this.props.teams} players={this.props.players} />} />

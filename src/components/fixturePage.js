@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Tabs, Tab } from 'react-bootstrap';
 import CommentContainer from './commentContainer';
-
+import { connect } from 'react-redux';
 
 function FixturePage (props) {
     let id = parseInt(props.match.params.id)
@@ -22,4 +22,10 @@ function FixturePage (props) {
     )
 }
 
-export default FixturePage;
+const mapStateToProps = (state) => {
+    return {
+        comments: state.comments,
+    }
+}
+
+export default connect(mapStateToProps)(FixturePage);
